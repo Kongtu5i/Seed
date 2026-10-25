@@ -58,6 +58,11 @@ def on_info(server: PluginServerInterface, info: Info):
     
     if getting_seed:
         result = parse(config['parser'], info.content)
+        # Minecraft 26.3 prefixes command feedback with "System chat: ".
+        # Try the original content first to preserve custom parser behavior.
+        prefix = 'System chat: '
+        if result is None and info.content.startswith(prefix):
+            result = parse(config['parser'], info.content[len(prefix):])
         if result:
             seed = result[0]
 

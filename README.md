@@ -21,6 +21,25 @@ Default config file:
 
 The default configuration already supports most server software (without plugin/mods).
 
+Both the legacy `Seed: [123]` output and Minecraft 26.3's
+`System chat: Seed: [123]` output are supported. Existing configuration files
+do not need to be changed. Custom parsers are tried against the original
+output first, then against the output without the `System chat: ` prefix.
+
+## Install / upgrade
+
+Replace the existing Seed plugin in MCDR's `plugins` directory with
+`seed-v1.2.1.mcdr`, then run `!!MCDR plugin reload seed`.
+Use `!!seed` in game to check the result.
+
+## Tests
+
+With MCDReforged installed, run:
+
+```sh
+python -m unittest discover -s tests -v
+```
+
 ## Thanks to
 
 This plugin was inspired by [`MCDReforged/Seed`](https://github.com/MCDReforged/Seed)
